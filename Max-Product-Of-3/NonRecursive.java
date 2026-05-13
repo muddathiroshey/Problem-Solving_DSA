@@ -1,56 +1,50 @@
 import java.util.*;
+
 public class NonRecursive {
     public static int maximumProduct(int[] nums) {
-        int n = nums.length;
-        heapSort(nums);
 
-        int product1 = nums[n - 1] * nums[n - 2] * nums[n - 3];
-        int product2 = nums[0] * nums[1] * nums[n - 1];
+        int max1 = Integer.MIN_VALUE;
+        int max2 = Integer.MIN_VALUE;
+        int max3 = Integer.MIN_VALUE;
+
+
+        int min1 = Integer.MAX_VALUE;
+        int min2 = Integer.MAX_VALUE;
+
+
+        for (int num : nums) {
+
+            if (num >= max1) {
+                max3 = max2;
+                max2 = max1;
+                max1 = num;
+            } else if (num >= max2) {
+                max3 = max2;
+                max2 = num;
+            } else if (num >= max3) {
+                max3 = num;
+            }
+
+
+            if (num <= min1) {
+                min2 = min1;
+                min1 = num;
+            } else if (num <= min2) {
+                min2 = num;
+            }
+        }
+
+
+        int product1 = max1 * max2 * max3;
+        int product2 = min1 * min2 * max1;
+
 
         return Math.max(product1, product2);
     }
 
-    private static void heapSort(int[] nums) {
-        int n = nums.length;
-
-        // Build max heap
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(nums, n, i);
-        }
-
-        // Extract elements from heap one by one
-        for (int i = n - 1; i > 0; i--) {
-            swap(nums, 0, i);
-            heapify(nums, i, 0);
-        }
-    }
-
-    private static void heapify(int[] nums, int heapSize, int rootIndex) {
-        int largest = rootIndex;
-        int left = 2 * rootIndex + 1;
-        int right = 2 * rootIndex + 2;
-
-        if (left < heapSize && nums[left] > nums[largest]) {
-            largest = left;
-        }
-
-        if (right < heapSize && nums[right] > nums[largest]) {
-            largest = right;
-        }
-
-        if (largest != rootIndex) {
-            swap(nums, rootIndex, largest);
-            heapify(nums, heapSize, largest);
-        }
-    }
-
-    private static void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
     public static void main(String[] args) {
+        System.out.println("\n ----Maximum Product of 3 Numbers Non-Recursive---- \n");
+
         System.out.print("Enter the the number of Elements: ");
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
