@@ -35,7 +35,7 @@ FUNCTION maximumProduct(nums[0,1,2...n-1]):
 
 1. Input size: ``` n ```.<br>
 2. Basic operation: The comparison .eg ```num >=max1```.<br>
-3. ```T(n) = \sum_{i=0}^{n-1} 1```<br>
+3. ```T(n) = Σ [i=0 to n-1] 1```<br>
 4. ```T(n) = (n - 1) - 0 + 1```<br>
 5. ```T(n) = n```<br>
 6. **Result:** Time complexity of the algorithm is ```Θ(n)```.
@@ -80,19 +80,20 @@ FUNCTION heapify(nums, heapSize, rootIndex):
 ##### Heapify (Recursive method):
 1. Recurrence relation is: ```T(n) = T(n/2) + Θ(1)```<br>
 2. ```a = 1```, ```b = 2```, ```f(n) = 1```.<br>
-3. User master method ```\log_b(a)``` = ```\log_2(1) = \n^2 = 1```<br>
-4. Since ```\log_b(a)``` = ```f(n)``` we apply case 2.<br>
-5. ```T(n) = Θ(\log_b(a) * log n) = Θ(1 * log n) = Θ(log n)```<br>
+3. User master method ```log_b(a)``` = ```log_2(1) = n^0 = 1```<br>
+4. Since ```log_b(a)``` = ```f(n)``` we apply case 2.<br>
+5. ```t(n) = θ(log_b(a) * log n) = θ(1 * log n) = θ(log n)```<br>
 
 ##### Sort Heap:
-1. 1st Loop (Build Max heap): ```\sum_{i=0}^{n/2-1} θ(log n)```<br>
+1. 1st Loop (Build Max heap): ```Σ [i=0 to n/2-1] Θ(log n)```<br>
 2. ``` T(n) = Θ(n)```.<br>
-3. 2nd Loop (Extract elements one by one): ```\sum_{i=1}^{n-1} θ(log i)```<br>
+3. 2nd Loop (Extract elements one by one): ```Σ [i=1 to n-1] Θ(log i)```<br>
 4. T(n) = ```Θ(n log n)```<br>
 
 ##### Total Operation Count
 ```T(n) = Θ(n) + Θ(n log n) + Θ(1)```<br>
 Result: Time complexity of the algorithm is: ```Θ(n log n)```<br>
+
 ---
 
 ## Comparison Between Both Algorithms
